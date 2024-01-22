@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class ParallaxFlowDelegate extends FlowDelegate {
@@ -16,7 +14,7 @@ class ParallaxFlowDelegate extends FlowDelegate {
   @override
   BoxConstraints getConstraintsForChild(int i, BoxConstraints constraints) {
     return BoxConstraints.tightFor(
-      height: constraints.maxHeight,
+      height: 1.2 * constraints.maxHeight,
     );
   }
 
@@ -32,8 +30,7 @@ class ParallaxFlowDelegate extends FlowDelegate {
     // Determine the percent position of this list item within the
     // scrollable area.
     final viewportDimension = scrollable.position.viewportDimension;
-    final scrollFraction =
-        (listItemOffset.dx / viewportDimension).clamp(0.0, 1.0);
+    final scrollFraction = (listItemOffset.dx / viewportDimension);
 
     // Calculate the horizontal alignment of the background
     // based on the scroll percent.
@@ -44,7 +41,7 @@ class ParallaxFlowDelegate extends FlowDelegate {
     final backgroundSize =
         (backgroundImageKey.currentContext!.findRenderObject() as RenderBox)
             .size;
-    final listItemSize = context.size;
+    final listItemSize = Size(context.size.width, context.size.height);
     final childRect = horizontalAlignment.inscribe(
         backgroundSize, Offset.zero & listItemSize);
 

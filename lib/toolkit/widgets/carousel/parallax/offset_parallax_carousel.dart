@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ParallaxCarousel extends StatefulWidget {
+class OffsetParallaxCarousel extends StatefulWidget {
   final double aspectRatio;
   final double horizontalPadding;
   final List<String> items;
@@ -8,7 +8,7 @@ class ParallaxCarousel extends StatefulWidget {
   final Function(int)? onItemPressed;
   final BorderRadius borderRadius;
 
-  const ParallaxCarousel({
+  const OffsetParallaxCarousel({
     required this.items,
     required this.pageController,
     this.aspectRatio = 1.0,
@@ -19,10 +19,10 @@ class ParallaxCarousel extends StatefulWidget {
   });
 
   @override
-  State<ParallaxCarousel> createState() => _ParallaxCarouselState();
+  State<OffsetParallaxCarousel> createState() => _OffsetParallaxCarouselState();
 }
 
-class _ParallaxCarouselState extends State<ParallaxCarousel> {
+class _OffsetParallaxCarouselState extends State<OffsetParallaxCarousel> {
   late double pageOffset;
 
   @override
