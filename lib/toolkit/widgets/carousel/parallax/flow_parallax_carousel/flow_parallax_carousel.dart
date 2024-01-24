@@ -8,6 +8,7 @@ class FlowParallaxCarousel extends StatelessWidget {
   final List<String> items;
   final PageController pageController;
   final Function(int)? onItemPressed;
+  final Function(int)? onPageChanged;
   final BorderRadius borderRadius;
 
   const FlowParallaxCarousel({
@@ -17,6 +18,7 @@ class FlowParallaxCarousel extends StatelessWidget {
     this.horizontalPadding = 20.0,
     this.borderRadius = BorderRadius.zero,
     this.onItemPressed,
+    this.onPageChanged,
     super.key,
   });
 
@@ -26,6 +28,8 @@ class FlowParallaxCarousel extends StatelessWidget {
       aspectRatio: aspectRatio,
       child: PageView.builder(
         physics: const BouncingScrollPhysics(),
+        onPageChanged: onPageChanged,
+        controller: pageController,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: onItemPressed != null ? () => onItemPressed!(index) : null,

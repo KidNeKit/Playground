@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:playground/toolkit/widgets/carousel/dots/base_dots.dart';
+import 'package:playground/toolkit/widgets/carousel/dots/fixed_size_indicator.dart';
 
 import 'toolkit/widgets/carousel/parallax/flow_parallax_carousel/flow_parallax_carousel.dart';
 
@@ -15,12 +17,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late PageController pageController;
+  late int index;
 
   @override
   void initState() {
     super.initState();
 
     pageController = PageController();
+    index = 0;
   }
 
   @override
@@ -33,11 +37,39 @@ class _MyAppState extends State<MyApp> {
               FlowParallaxCarousel(
                 pageController: pageController,
                 borderRadius: BorderRadius.circular(20.0),
+                onPageChanged: (index) {
+                  setState(() {
+                    this.index = index;
+                  });
+                },
                 items: const [
                   'https://miro.medium.com/v2/resize:fit:1358/0*u9EBS_967l84_0N2',
                   'https://images.all-free-download.com/images/graphiclarge/beach_cloud_dawn_horizon_horizontal_landscape_ocean_601821.jpg',
                   'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
+                  'https://wallpapers.com/images/hd/wooden-cottage-sea-high-resolution-d7fahhz6phtkdveh.jpg',
                 ],
+              ),
+              const SizedBox(height: 10.0),
+              BaseDots(
+                itemCount: 3,
+                index: index,
+              ),
+              const SizedBox(height: 10.0),
+              FixedSizeIndicator(
+                index: index,
+                length: 16,
               ),
             ],
           ),
